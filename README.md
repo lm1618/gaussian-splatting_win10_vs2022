@@ -97,6 +97,34 @@ The optimizer uses PyTorch and CUDA extensions in a Python environment to produc
 ### Setup
 
 #### Local Setup
+首先安装VS2022 CUDA 12.4（根据需要调整environment.yml中版本，） ninja
+VS2022地址：https://visualstudio.microsoft.com/zh-hans/downloads/，修改版本时需修改environment.yml中版本
+CUDA地址：https://developer.nvidia.com/cuda-toolkit-archive，版本参照https://pytorch.org/get-started/locally/
+ninja地址：https://github.com/ninja-build/ninja/releases
+Miniconda：https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe
+配置相关环境变量
+    测试配置是否成功
+    Microsoft Windows [版本 10.0.19045.5131]
+    (c) Microsoft Corporation。保留所有权利。
+    
+    C:\Users>cl
+    用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.42.34435 版
+    版权所有(C) Microsoft Corporation。保留所有权利。
+    
+    用法: cl [ 选项... ] 文件名... [ /link 链接选项... ]
+    
+    C:\Users>nvcc -V
+    nvcc: NVIDIA (R) Cuda compiler driver
+    Copyright (c) 2005-2024 NVIDIA Corporation
+    Built on Thu_Mar_28_02:30:10_Pacific_Daylight_Time_2024
+    Cuda compilation tools, release 12.4, V12.4.131
+    Build cuda_12.4.r12.4/compiler.34097967_0
+    
+    C:\Users\HY>ninja -V
+    ninja: invalid option -- `-V'
+    usage: ninja [options] [targets...]
+
+
 
 Our default, provided install method is based on Conda package and environment management:
 ```shell
@@ -104,7 +132,8 @@ SET DISTUTILS_USE_SDK=1 # Windows only
 conda env create --file environment.yml
 conda activate gaussian_splatting
 ```
-Please note that this process assumes that you have CUDA SDK **11** installed, not **12**. For modifications, see below.
+更新安装 conda env update -f environment.yml
+Please note that this process assumes that you have CUDA SDK **12** installed, For modifications, see below.
 
 Tip: Downloading packages and creating a new environment with Conda can require a significant amount of disk space. By default, Conda will use the main system hard drive. You can avoid this by specifying a different package download location and an environment on a different drive:
 
